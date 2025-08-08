@@ -26,7 +26,6 @@
       "args": ["${__dirname}/server/main.py"],
       "env": {
         "PYTHONPATH": "${__dirname}/server/lib:${__dirname}/server",
-        "GOOGLE_API_KEY": "${user_config.google_api_key:-}",
         "ANONYMIZED_TELEMETRY": "false",
         "BROWSER_USE_LOGGING_LEVEL": "CRITICAL"
       }
@@ -49,14 +48,12 @@
       "python": ">=3.11,<4.0"
     }
   },
-  "user_config": {
-    "google_api_key": {
-      "type": "string",
-      "title": "Google API Key",
+  "environment_variables": {
+    "GOOGLE_API_KEY": {
       "description": "Your Google API key for Gemini 2.0 Flash model (required for AI-powered testing)",
-      "sensitive": true,
       "required": true,
-      "placeholder": "Enter your Google API key from https://developers.google.com/maps/api-security-best-practices"
+      "example": "AIza...",
+      "url": "https://aistudio.google.com/app/apikey"
     }
   }
 }
