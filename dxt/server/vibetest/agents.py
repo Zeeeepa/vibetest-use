@@ -2,10 +2,31 @@ import asyncio, os, uuid, json, time
 from browser_use import Agent, BrowserSession, BrowserProfile, ChatGoogle
 from browser_use.llm.messages import UserMessage
 
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+def get_google_api_key():
+    """Get Google API key from multiple sources"""
+    # Try environment variable first
+    api_key = os.getenv("GOOGLE_API_KEY")
+    if api_key and api_key.strip():
+        return api_key.strip()
+    
+    # Try alternative environment variables
+    for env_var in ["GEMINI_API_KEY", "GOOGLE_GENAI_API_KEY"]:
+        api_key = os.getenv(env_var)
+        if api_key and api_key.strip():
+            return api_key.strip()
+    
+    return None
+
+GOOGLE_API_KEY = get_google_api_key()
 
 if not GOOGLE_API_KEY:
-    raise ValueError("GOOGLE_API_KEY environment variable is required. Set it in your MCP config or environment.")
+    print("❌ Google API Key not found!")
+    print("📋 Please set your Google API key in one of these ways:")
+    print("   1. In Claude Desktop: Configure the 'google_api_key' setting for this DXT")
+    print("   2. Environment variable: GOOGLE_API_KEY=your_key_here")
+    print("   3. Alternative env vars: GEMINI_API_KEY or GOOGLE_GENAI_API_KEY")
+    print("🔗 Get your API key from: https://aistudio.google.com/app/apikey")
+    raise ValueError("Google API key is required for Vibetest to function")
 
 _test_results = {}
 

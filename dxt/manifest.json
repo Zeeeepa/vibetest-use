@@ -26,7 +26,7 @@
       "args": ["${__dirname}/server/main.py"],
       "env": {
         "PYTHONPATH": "${__dirname}/server/lib:${__dirname}/server",
-        "GOOGLE_API_KEY": "${user_config.google_api_key}",
+        "GOOGLE_API_KEY": "${user_config.google_api_key:-}",
         "ANONYMIZED_TELEMETRY": "false",
         "BROWSER_USE_LOGGING_LEVEL": "CRITICAL"
       }

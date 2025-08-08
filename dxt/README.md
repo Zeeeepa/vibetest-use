@@ -19,9 +19,12 @@ Automated QA testing using Browser-Use agents to test websites for UI bugs, brok
 
 This is a Desktop Extension (DXT) file that can be installed with one click in Claude Desktop and other MCP-enabled applications.
 
-1. Download the `vibetest-use-mcp.dxt` file
-2. Double-click to install in Claude Desktop
-3. Configure your Google API Key when prompted
+1. **Get a Google API Key** (free): [Google AI Studio](https://aistudio.google.com/app/apikey)
+2. **Download** the `vibetest-use-mcp.dxt` file
+3. **Install** by double-clicking the DXT file in Claude Desktop
+4. **Configure** your Google API Key when prompted
+
+> 🔑 **Need help with API key setup?** See [API_KEY_SETUP.md](API_KEY_SETUP.md) for detailed instructions.
 
 ## Usage
 
