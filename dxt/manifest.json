@@ -1,0 +1,62 @@
+{
+  "dxt_version": "0.1",
+  "name": "vibetest-use",
+  "display_name": "Vibetest - Automated QA Testing",
+  "version": "0.1.0",
+  "description": "Automated QA testing using Browser-Use agents to test websites for UI bugs, broken links, accessibility issues, and technical problems",
+  "long_description": "Vibetest is an automated QA testing tool that launches multiple Browser-Use agents to comprehensively test websites for various issues including UI bugs, broken links, accessibility problems, and other technical issues. Perfect for testing both live websites and localhost development sites. The tool uses AI-powered browser automation to simulate real user interactions and identify potential problems that might be missed in manual testing.",
+  "author": {
+    "name": "Browser-Use Team",
+    "url": "https://github.com/browser-use"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/browser-use/vibetest-use"
+  },
+  "homepage": "https://github.com/browser-use/vibetest-use",
+  "documentation": "https://github.com/browser-use/vibetest-use#readme",
+  "support": "https://github.com/browser-use/vibetest-use/issues",
+  "keywords": ["qa", "testing", "browser-automation", "ai", "web-testing", "accessibility", "ui-testing"],
+  "license": "MIT",
+  "server": {
+    "type": "python",
+    "entry_point": "server/main.py",
+    "mcp_config": {
+      "command": "python",
+      "args": ["${__dirname}/server/main.py"],
+      "env": {
+        "PYTHONPATH": "${__dirname}/server/lib:${__dirname}/server",
+        "GOOGLE_API_KEY": "${user_config.google_api_key}",
+        "ANONYMIZED_TELEMETRY": "false",
+        "BROWSER_USE_LOGGING_LEVEL": "CRITICAL"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "start",
+      "description": "Launch browser agents to test a website for UI bugs and issues"
+    },
+    {
+      "name": "results",
+      "description": "Get the consolidated bug report for a test run"
+    }
+  ],
+  "compatibility": {
+    "claude_desktop": ">=0.10.0",
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "python": ">=3.11,<4.0"
+    }
+  },
+  "user_config": {
+    "google_api_key": {
+      "type": "string",
+      "title": "Google API Key",
+      "description": "Your Google API key for Gemini 2.0 Flash model (required for AI-powered testing)",
+      "sensitive": true,
+      "required": true,
+      "placeholder": "Enter your Google API key from https://developers.google.com/maps/api-security-best-practices"
+    }
+  }
+}
