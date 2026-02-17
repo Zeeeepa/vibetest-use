@@ -1,0 +1,7 @@
+mcp[cli]>=1.0.0
+browser-use
+playwright
+langchain_google_genai
+langchain_core
+pydantic
+screeninfo
